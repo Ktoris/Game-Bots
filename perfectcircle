@@ -1,0 +1,22 @@
+import time
+import pyautogui
+import math
+#visit https://neal.fun/perfect-circle/
+time.sleep(2.1)
+center = 960, 538
+radius = 190
+pyautogui.moveTo(960, 538 - radius)
+pyautogui.mouseDown()
+resolution = 11 #a circle with radius < 11 is registered as too slow in the game
+for y in range(538-radius, 538+radius+1, resolution):
+    yy = 538 - y
+    x = math.sqrt(radius**2 - yy**2)
+    xx = 960 - x
+    pyautogui.moveTo(xx, y)
+for y in range(538+radius, 538-radius-1, -resolution):
+    yy = 538 - y
+    x = math.sqrt(radius ** 2 - yy ** 2)
+    xx = 960 + x
+    pyautogui.moveTo(xx, y)
+pyautogui.moveTo(960, 538-radius)
+pyautogui.mouseUp()
